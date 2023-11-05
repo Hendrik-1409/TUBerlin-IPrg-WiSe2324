@@ -27,7 +27,7 @@ Geben Sie einen gültigen Pointer auf den gleichen Wert wie `x` zurück.
 Tipp: Ein Pointer direkt auf `x` ist nicht gültig. Warum?
 */
 uint32_t *return_pointer(uint32_t x) {
-    uint32_t *z = (uint32_t *) malloc(sizeof(x));
+    uint32_t *z = (uint32_t *) malloc(sizeof(uint32_t));
     *z = x;
     return z;
 }
