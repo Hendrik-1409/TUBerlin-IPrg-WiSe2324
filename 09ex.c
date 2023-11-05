@@ -27,7 +27,9 @@ Geben Sie einen gültigen Pointer auf den gleichen Wert wie `x` zurück.
 Tipp: Ein Pointer direkt auf `x` ist nicht gültig. Warum?
 */
 uint32_t *return_pointer(uint32_t x) {
-    return NULL;
+    uint32_t *z = (uint32_t *) malloc(sizeof(x));
+    *z = x;
+    return z;
 }
 
 /*
@@ -36,7 +38,9 @@ Geben Sie den Wert zurück, auf den der Pointer `x` zeigt, und rufen Sie `free` 
 Tipp: Nach dem Aufruf von `free` darf der Pointer nicht mehr dereferenziert werden.
 */
 uint32_t free_pointer(uint32_t *x) {
-    return 0;
+    uint32_t z = *x;
+    free(x);
+    return z;
 }
 
 /*
@@ -140,7 +144,11 @@ Aufgabe 2a:
 Rufen Sie `free` für alle Pointer auf, die Teil des gegebenen Pfannkuchens sind.
 */
 bool free_pancake(PileOfPancakes p) {
-    return false;
+    if (p.further_layers != NULL && free_pancake(*p.further_layers))
+    {
+        free (p.further_layers);
+    }
+    return true;
 }
 
 /*
@@ -148,8 +156,38 @@ Aufgabe 2b:
 Erstellen Sie einen Pfannkuchen mit `n` beliebigen Schichten (`n` ist mindestens 1).
 Hinweis: Wir nutzen Ihre free_pancake() Funktion zum freigeben des erstellten Pfannkuchens.
 */
+PileOfPancakes addLayer(PileOfPancakes p, Layer l)
+{
+    if (p.further_layers == NULL)
+    {
+        p.further_layers = (PileOfPancakes *) malloc(sizeof(PileOfPancakes));
+        PileOfPancakes c = {.layer = l, .further_layers = NULL};
+        *p.further_layers = c;
+    }
+    else
+    {
+        *p.further_layers = addLayer(*p.further_layers, l); 
+    }
+    return p;
+}
+
 PileOfPancakes create_pancake(uint32_t n) {
     PileOfPancakes p = { .layer = ActualPancake, .further_layers = NULL };
+    int32_t whatLayer = 1;
+    n--;
+    if (n > 0)
+    {
+        for (size_t i = 0; i < n; i++)
+        {
+            Layer currentLayer = whatLayer;
+            p = addLayer(p, currentLayer);
+            whatLayer++;
+            if (whatLayer > 2)
+            {
+                whatLayer = 0;
+            }
+        }
+    }
     return p;
 }
 
@@ -163,6 +201,11 @@ wiederverwenden kann. Wir wollen nur noch einmal Unterschiede zwischen direkter 
 Übergabe durch Pointer demonstrieren.
 */
 bool free_pancake2(PileOfPancakes *p) {
+    if (free_pancake(*p))
+    {
+        free(p);
+        return true;
+    }
     return false;
 }
 
@@ -200,5 +243,10 @@ geben Sie es zurück.
 Hinweis: Wir starten bei `1`.
 */
 uint16_t *create_dynamic_array(size_t x) {
-    return NULL;
+    uint16_t* arraySquareNumbers = (uint16_t *) malloc(x * sizeof(uint16_t));
+    for (size_t i = 0; i < x; i++)
+    {
+        arraySquareNumbers[i] = (i + 1) * (i + 1);
+    }
+    return arraySquareNumbers;
 }
