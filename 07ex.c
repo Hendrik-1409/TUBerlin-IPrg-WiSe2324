@@ -307,6 +307,7 @@ Aufgabe 5b:
 Ein Pfannkuchenhaufen ist *stabil*, wenn die erste und letzte Schicht tatsächliche Teigfladen (`ActualPancake`) sind.
 Geben Sie zurück, ob der gegebene Pfannkuchenhaufen stabil ist.
 */
+
 bool lastLayer(PileOfPancakes p)
 {
     if (p.further_layers == NULL && p.layer == ActualPancake)
