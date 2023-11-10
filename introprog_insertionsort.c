@@ -23,8 +23,6 @@ void insertion_sort(int array[], int len) {
             j--;
         }
         array[j + 1] = key;
-        printf("%d at %d für %d\n", key, j + 1, array[j + 1]);
-        print_array(array, len);
     }
 }
 
