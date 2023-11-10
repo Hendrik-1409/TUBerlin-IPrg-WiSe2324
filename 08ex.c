@@ -135,6 +135,7 @@ void square_ascending(uint16_t numbers[], size_t numbers_len) {
     {
         numbers[i - 1] = i * i;
     }
+    
     return;
 }
 
