@@ -175,6 +175,7 @@ Wert vom Typ `RGB` zurück gibt.
 Canvas canvas_to_gray(Canvas c) {
     int width = canvas_width(c);
     int height = canvas_height(c);
+    
     for (int i = 0; i < width; i++)
     {
         for (int a = 0; a < height; a++)
