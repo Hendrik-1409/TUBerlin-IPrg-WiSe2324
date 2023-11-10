@@ -156,7 +156,6 @@ Canvas paint_it_black(Canvas c) {
         }
         
     }
-    
     return c;
 }
 
