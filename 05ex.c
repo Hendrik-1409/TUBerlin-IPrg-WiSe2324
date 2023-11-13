@@ -166,5 +166,4 @@ Canvas bucket_fill(Canvas c, int x, int y) {
         c = bucket_fill(c, x + 1, y + 1);
     }
     return c;
-    
 }
