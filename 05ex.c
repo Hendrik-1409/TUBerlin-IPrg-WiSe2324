@@ -143,6 +143,10 @@ zu vier direkte Nachbarn - die Diagonalen zählen nicht.
 Funktionen, um die Farbe eines Pixels auf der Canvas zu bestimmen, sind im Headerfile der Canvas dokumentiert.
 */
 Canvas bucket_fill(Canvas c, int x, int y) {
+    if (x < 0 || y < 0 || x >= canvas_width(c) || y >= canvas_height(c))
+    {
+        return c;
+    }
     int i = pixel_is_white(c, x, y);
     if (i == 0)
     {
