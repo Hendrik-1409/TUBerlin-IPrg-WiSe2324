@@ -20,7 +20,7 @@ void count_sort_write_output_array(int output_array[], int count_array[], SortDi
     int outCounter = 0;
     if (order == ASCENDING)
     {
-        for (size_t i = 0; i <= MAX_VALUE; i++)
+        for (int i = 0; i <= MAX_VALUE; i++)
         {
             for (size_t j = 0; j < count_array[i]; j++)
             {
@@ -31,7 +31,7 @@ void count_sort_write_output_array(int output_array[], int count_array[], SortDi
     }
     else
     {
-        for (size_t i = MAX_VALUE; i >= 0; i--)
+        for (int i = MAX_VALUE; i >= 0; i--)
         {
             for (size_t j = 0; j < count_array[i]; j++)
             {
