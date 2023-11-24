@@ -31,7 +31,7 @@ void count_sort_write_output_array(int output_array[], int count_array[], SortDi
     }
     else
     {
-        for (int i = MAX_VALUE; i >= 0; i--)
+        for (int i = MAX_VALUE - 1; i >= 0; i--)
         {
             for (size_t j = 0; j < count_array[i]; j++)
             {
@@ -116,7 +116,7 @@ int main(int argc, char *argv[]) {
      * Hier count_sort aufrufen und alle nötigen Deklarationen einfügen!
      */
 
-    int output_array[MAX_LAENGE - 1];
+    int output_array[MAX_LAENGE];
     count_sort(input_array, len, output_array, sDirection);
 
     printf("Sortiertes Array:");
