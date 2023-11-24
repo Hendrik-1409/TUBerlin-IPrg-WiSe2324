@@ -116,7 +116,7 @@ int main(int argc, char *argv[]) {
      * Hier count_sort aufrufen und alle nötigen Deklarationen einfügen!
      */
 
-    int output_array[MAX_LAENGE + 1];
+    int output_array[MAX_LAENGE - 1];
     count_sort(input_array, len, output_array, sDirection);
 
     printf("Sortiertes Array:");
