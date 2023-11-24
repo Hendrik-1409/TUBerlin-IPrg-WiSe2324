@@ -62,7 +62,7 @@ SortDirection extract_order_direction (char *order)
 
 void count_sort(int input_array[], int len, int output_array[], SortDirection order)
 {
-    int count[MAX_VALUE];
+    int count[MAX_VALUE + 1];
     for (int a = 0; a <= MAX_VALUE; a++)
     {
         count[a] = 0;
