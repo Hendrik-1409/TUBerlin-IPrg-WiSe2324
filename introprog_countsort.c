@@ -31,7 +31,7 @@ void count_sort_write_output_array(int output_array[], int count_array[], SortDi
     }
     else
     {
-        for (int i = MAX_VALUE - 1; i >= 0; i--)
+        for (int i = MAX_VALUE + 1; i >= 0; i--)
         {
             for (size_t j = 0; j < count_array[i]; j++)
             {
