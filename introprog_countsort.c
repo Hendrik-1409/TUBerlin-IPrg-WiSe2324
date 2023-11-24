@@ -31,7 +31,7 @@ void count_sort_write_output_array(int output_array[], int count_array[], SortDi
     }
     else
     {
-        for (int i = MAX_VALUE + 1; i >= 0; i--)
+        for (int i = MAX_VALUE; i >= 0; i--)
         {
             for (size_t j = 0; j < count_array[i]; j++)
             {
@@ -62,7 +62,7 @@ SortDirection extract_order_direction (char *order)
 
 void count_sort(int input_array[], int len, int output_array[], SortDirection order)
 {
-    int count[MAX_VALUE];
+    int count[MAX_VALUE + 1];
     count_sort_calculate_counts(input_array, len, count);
     count_sort_write_output_array(output_array, count, order);
 }
