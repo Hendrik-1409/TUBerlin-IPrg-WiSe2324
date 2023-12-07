@@ -35,9 +35,7 @@ element* insert_at_begin(element* firstElement, element* newElement) {
 element *construct_element(char* bookTitle, char* bookAuthor, uint32_t bookYear, uint64_t bookISBN) {
     /* HIER implementieren. */
     element *newElement = (element *)calloc(1, sizeof(element));
-    *newElement->title = *(char *)calloc(1, MAX_STR + 1);
     strcpy(newElement->title, bookTitle);
-    *newElement->author = *(char *)calloc(1, MAX_STR + 1);
     strcpy(newElement->author, bookAuthor);
     newElement->year = bookYear;
     newElement->isbn = bookISBN;
