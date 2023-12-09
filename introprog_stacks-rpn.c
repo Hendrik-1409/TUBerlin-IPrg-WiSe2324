@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include <math.h>  // definiert den speziellen Wert NaN für floats
 #include "introprog_stacks-rpn.h"
 #include "introprog_input_stacks-rpn.h"
@@ -69,7 +70,7 @@ void process(stack* thisStack, char* Input)
         {
             char tmpStr[strlen(Input)];
             int counterTmpStr = 0;
-            for (size_t a = posLastBlank + 1; a < i; a++)
+            for (size_t a = posLastBlank; a < i; a++)
             {
                 tmpStr[counterTmpStr] = Input[a];
                 counterTmpStr++;
@@ -92,7 +93,7 @@ void process(stack* thisStack, char* Input)
             {
                 stack_push(thisStack, stack_pop(thisStack) * stack_pop(thisStack));
             }
-            posLastBlank = i;
+            posLastBlank = i + 1;
         }        
     }
     return;
