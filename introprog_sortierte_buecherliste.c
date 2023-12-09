@@ -22,8 +22,11 @@
  */
 element* insert_sorted(element* firstElement, element* newElement) {
     /* HIER implementieren. */
-    printf("sort started!");
-    if (firstElement->next == NULL)
+    if (firstElement == NULL)
+    {
+        return newElement;
+    }
+    else if (firstElement->next == NULL)
     {
         newElement->next = firstElement->next;
         firstElement->next = newElement;
@@ -32,10 +35,6 @@ element* insert_sorted(element* firstElement, element* newElement) {
     {
         printf("%lu\n", firstElement->isbn);
         insert_sorted(firstElement->next, newElement);
-    }
-    else if (firstElement == NULL)
-    {
-        return newElement;
     }
     return firstElement;
 }
@@ -52,7 +51,6 @@ void read_list_sorted(char* filename, list *alist) {
     read_line_context ctx;
     open_file(&ctx, filename);
     while(read_line(&ctx, &new_title, &new_author, &new_year, &new_isbn) == 0) {
-        printf("construct element strting\n");
         new_elem = construct_element(new_title, new_author, new_year, new_isbn);
         alist->first = insert_sorted(alist->first, new_elem);
         alist->count++;
