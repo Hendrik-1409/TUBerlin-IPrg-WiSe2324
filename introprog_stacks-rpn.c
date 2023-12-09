@@ -65,7 +65,7 @@ void process(stack* thisStack, char* Input)
     int posLastBlank = 0;
     for (size_t i = 0; i < strlen(Input); i++)
     {
-        if (Input[i] == " ")
+        if (strcmp(Input[i], " "))
         {
             char* tmpStr[strlen(Input)];
             int counterTmpStr = 0;
