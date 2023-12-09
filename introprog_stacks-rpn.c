@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 #include <math.h>  // definiert den speziellen Wert NaN für floats
 #include "introprog_stacks-rpn.h"
 #include "introprog_input_stacks-rpn.h"
