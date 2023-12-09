@@ -69,7 +69,7 @@ void process(stack* thisStack, char* Input)
         {
             char tmpStr[strlen(Input)];
             int counterTmpStr = 0;
-            for (size_t a = posLastBlank; a < i; a++)
+            for (size_t a = posLastBlank + 1; a < i; a++)
             {
                 tmpStr[counterTmpStr] = Input[a];
                 counterTmpStr++;
@@ -79,16 +79,16 @@ void process(stack* thisStack, char* Input)
             {
                 stack_push(thisStack, atof(tmpStr));
             }
-            if (is_add(tmpStr))
+            else if (is_add(tmpStr))
             {
                 stack_push(thisStack, stack_pop(thisStack) + stack_pop(thisStack));
             }
-            if (is_sub(tmpStr))
+            else if (is_sub(tmpStr))
             {
                 float secondNumber = stack_pop(thisStack);
                 stack_push(thisStack, stack_pop(thisStack) - secondNumber);
             }
-            if (is_mult(tmpStr))
+            else if (is_mult(tmpStr))
             {
                 stack_push(thisStack, stack_pop(thisStack) * stack_pop(thisStack));
             }
