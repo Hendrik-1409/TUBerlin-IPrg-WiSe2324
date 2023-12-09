@@ -26,16 +26,12 @@ element* insert_sorted(element* firstElement, element* newElement) {
     {
         return newElement;
     }
-    else if (firstElement->next == NULL)
+    else if (firstElement->isbn >= newElement->isbn)
     {
-        newElement->next = firstElement->next;
-        firstElement->next = newElement;
+        newElement->next = firstElement;
+        return newElement;
     }
-    else if (firstElement->next != NULL && firstElement->isbn < newElement->isbn)
-    {
-        printf("%lu\n", firstElement->isbn);
-        insert_sorted(firstElement->next, newElement);
-    }
+    firstElement->next = insert_sorted(firstElement->next, newElement);
     return firstElement;
 }
 
