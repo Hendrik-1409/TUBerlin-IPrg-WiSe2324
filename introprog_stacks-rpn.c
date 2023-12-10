@@ -62,21 +62,6 @@ float stack_pop(stack* thisStack)
 void process(stack* thisStack, char* Input)
 {
     /* HIER implementieren */
-    printf("%s\n", Input);
-    /*int posLastBlank = 0;
-    for (size_t i = 0; i < strlen(Input); i++)
-    {
-        if (strcmp(&Input[i], " "))
-        {
-            char tmpStr[strlen(Input)];
-            int counterTmpStr = 0;
-            for (size_t a = posLastBlank; a < i; a++)// Kopiert string aus dem Abschnitt zwischen dem vorherigen Leerzeich und dem Aktuellen in einen temporären String
-            {
-                tmpStr[counterTmpStr] = Input[a];
-                counterTmpStr++;
-            }
-            tmpStr[counterTmpStr + 1] = '\0';
-            printf("%s\n", tmpStr);*/
             if (is_number(Input))
             {
                 stack_push(thisStack, atof(Input));
@@ -94,9 +79,6 @@ void process(stack* thisStack, char* Input)
             {
                 stack_push(thisStack, stack_pop(thisStack) * stack_pop(thisStack));
             }
-            /*posLastBlank = i + 1;
-        }        
-    }*/
     return;
     /* Du kannst zur Erkennung der Token folgende Hilfsfunktionen
      * benutzen:
