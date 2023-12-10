@@ -3,7 +3,7 @@
 #include <math.h>  // definiert den speziellen Wert NaN für floats
 #include "introprog_stacks-rpn.h"
 #include "introprog_input_stacks-rpn.h"
-
+#include <stdio.h>
 /* 
  * Füge Element am Anfang des Stacks ein
  *
@@ -62,39 +62,41 @@ float stack_pop(stack* thisStack)
 void process(stack* thisStack, char* Input)
 {
     /* HIER implementieren */
-    int posLastBlank = 0;
+    printf("%s\n", Input);
+    /*int posLastBlank = 0;
     for (size_t i = 0; i < strlen(Input); i++)
     {
         if (strcmp(&Input[i], " "))
         {
             char tmpStr[strlen(Input)];
             int counterTmpStr = 0;
-            for (size_t a = posLastBlank; a < i; a++)
+            for (size_t a = posLastBlank; a < i; a++)// Kopiert string aus dem Abschnitt zwischen dem vorherigen Leerzeich und dem Aktuellen in einen temporären String
             {
                 tmpStr[counterTmpStr] = Input[a];
                 counterTmpStr++;
             }
             tmpStr[counterTmpStr + 1] = '\0';
-            if (is_number(tmpStr))
+            printf("%s\n", tmpStr);*/
+            if (is_number(Input))
             {
-                stack_push(thisStack, atof(tmpStr));
+                stack_push(thisStack, atof(Input));
             }
-            else if (is_add(tmpStr))
+            else if (is_add(Input))
             {
                 stack_push(thisStack, stack_pop(thisStack) + stack_pop(thisStack));
             }
-            else if (is_sub(tmpStr))
+            else if (is_sub(Input))
             {
                 float secondNumber = stack_pop(thisStack);
                 stack_push(thisStack, stack_pop(thisStack) - secondNumber);
             }
-            else if (is_mult(tmpStr))
+            else if (is_mult(Input))
             {
                 stack_push(thisStack, stack_pop(thisStack) * stack_pop(thisStack));
             }
-            posLastBlank = i + 1;
+            /*posLastBlank = i + 1;
         }        
-    }
+    }*/
     return;
     /* Du kannst zur Erkennung der Token folgende Hilfsfunktionen
      * benutzen:
