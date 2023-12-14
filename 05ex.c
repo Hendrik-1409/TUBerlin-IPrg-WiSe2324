@@ -40,9 +40,10 @@ bool search_tree_insert(TreeNode *t, uint16_t x) {
             TreeNode *new = (TreeNode *)calloc(1, sizeof(TreeNode));
             new->item = x;
             t->right = new;
+            return true;
         }
         else {
-            search_tree_insert(t->right, x);
+            return search_tree_insert(t->right, x);
         }
     }
     else {
@@ -50,9 +51,10 @@ bool search_tree_insert(TreeNode *t, uint16_t x) {
             TreeNode *new = (TreeNode *)calloc(1, sizeof(TreeNode));
             new->item = x;
             t->left = new;
+            return true;
         }
         else {
-            search_tree_insert(t->left, x);
+            return search_tree_insert(t->left, x);
         }
     }
     return false;
