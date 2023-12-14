@@ -64,4 +64,26 @@ ist. Falls keine solche Zahl existiert, geben Sie stattdessen `x` zurück. Die
 Laufzeit Ihrer Lösung soll proportional zur Höhe des Baumes sein, aber
 unabhängig von der Gesamtzahl an Knoten.
 */
-uint16_t search_tree_get_greater_than(TreeNode *t, uint16_t x) { return 0; }
+uint16_t search_tree_get_greater_than(TreeNode *t, uint16_t x) {
+    if (t->item < x)
+    {
+        if (t->right == NULL)
+        {
+            return x;
+        }
+        return search_tree_get_greater_than(t->right, x);
+    }
+    if (t->item > x)
+    {
+        if (t->left == NULL)
+        {
+            return t->item;
+        }
+        uint16_t newNumber = search_tree_get_greater_than(t->left, x);
+        if (newNumber < t->item && newNumber != x)
+        {
+            return newNumber;
+        }
+    }
+    return x;
+}
