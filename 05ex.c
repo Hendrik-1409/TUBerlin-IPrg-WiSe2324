@@ -84,6 +84,10 @@ uint16_t search_tree_get_greater_than(TreeNode *t, uint16_t x) {
         {
             return newNumber;
         }
+        else
+        {
+            return t->item;
+        }
     }
     return x;
 }
