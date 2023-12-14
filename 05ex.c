@@ -69,7 +69,7 @@ uint16_t search_tree_get_greater_than(TreeNode *t, uint16_t x) {
     {
         if (t->right == NULL)
         {
-            return t->item;
+            return x;
         }
         return search_tree_get_greater_than(t->right, x);
     }
