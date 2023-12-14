@@ -32,10 +32,7 @@ Nutzen Sie `malloc`, um das neue Blatt zu erstellen. Der Testrunner wird das
 Blatt wieder `free`n, darum brauchen Sie sich nicht zu kümmern.
 */
 bool search_tree_insert(TreeNode *t, uint16_t x) {
-    if (t->item == x) {
-        return true;
-    }
-    else if (t->item < x) {
+    if (t->item < x) {
         if (t->right == NULL) {
             TreeNode *new = (TreeNode *)calloc(1, sizeof(TreeNode));
             new->item = x;
@@ -46,7 +43,7 @@ bool search_tree_insert(TreeNode *t, uint16_t x) {
             return search_tree_insert(t->right, x);
         }
     }
-    else {
+    else if (t->item > x) {
         if (t->left == NULL) {
             TreeNode *new = (TreeNode *)calloc(1, sizeof(TreeNode));
             new->item = x;
