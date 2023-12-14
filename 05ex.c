@@ -65,7 +65,7 @@ Laufzeit Ihrer Lösung soll proportional zur Höhe des Baumes sein, aber
 unabhängig von der Gesamtzahl an Knoten.
 */
 uint16_t search_tree_get_greater_than(TreeNode *t, uint16_t x) {
-    if (t->item < x)
+    if (t != NULL && t->item < x)
     {
         if (t->right == NULL)
         {
@@ -73,7 +73,7 @@ uint16_t search_tree_get_greater_than(TreeNode *t, uint16_t x) {
         }
         return search_tree_get_greater_than(t->right, x);
     }
-    if (t->item > x)
+    if (t != NULL && t->item > x)
     {
         if (t->left == NULL)
         {
