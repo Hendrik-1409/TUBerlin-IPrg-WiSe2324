@@ -107,12 +107,12 @@ size_t partition(uint8_t *arr, size_t len, size_t startpoint) {
 void assist(Visualizer *v, uint8_t *arr, size_t len, size_t pivot, size_t startpoint) {
     printf("%lu bei len %lu\n",pivot, len);
     visualizer_append_array(v, arr);
-    if (pivot > 0) // linkseitig
+    if (pivot > startpoint + 1) // linkseitig
     {
         size_t i = partition(arr, pivot, startpoint);
         assist(v, arr, pivot, i, startpoint);
     }
-    if (len - pivot > 1) // rechtsseitig
+    if (len - pivot > 2) // rechtsseitig
     {
         size_t i = partition(arr, len, pivot + 1);
         assist(v, arr, len, i, pivot + 1);
@@ -122,6 +122,7 @@ void assist(Visualizer *v, uint8_t *arr, size_t len, size_t pivot, size_t startp
 }
 
 void sort_quickly(Visualizer *v, uint8_t *arr, size_t len) {
+    printf("\n\nTask starting \n");
     visualizer_append_array(v, arr);
     size_t i = partition(arr, len, 0);
     assist(v, arr, len, i, 0);
