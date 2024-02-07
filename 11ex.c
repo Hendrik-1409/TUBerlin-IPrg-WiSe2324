@@ -117,7 +117,6 @@ void assist(Visualizer *v, uint8_t *arr, size_t len, size_t pivot, size_t startp
         size_t i = partition(arr, len, pivot + 1);
         assist(v, arr, len, i, pivot + 1);
     }
-    visualizer_append_array(v, arr);
     return;
 }
 
