@@ -72,6 +72,7 @@ HeightTreeNode *rotate_right(HeightTreeNode *t) {
     }
     else
     {
+        free(t->left);
         t->left = NULL;
     }
     return t;
@@ -93,5 +94,36 @@ Aufgabe 2:
 Gegeben ein Beinahe-AVL-Baum mit korrekten Höhenwerten, geben Sie zurück, welche Rotationen ihn zu einem AVL-Baum machen.
 */
 Rotations determine_rotations(HeightTreeNode *t) {
+    int left_height = t->left ? t->left->height : 0;
+    int right_height = t->right ? t->right->height : 0;
+
+    int balance_factor = left_height - right_height;
+
+    if (balance_factor > 1) 
+    {
+        if (t->left && t->left->left && t->left->left->height >= (t->left->right ? t->left->right->height : 0))
+        {
+            // Left-Left case
+            return Right;
+        } 
+        else 
+        {
+            // Left-Right case
+            return DoubleRotationLeftRight;
+        }
+    } 
+    else if (balance_factor < -1) 
+    {
+        if (t->right && t->right->right && t->right->right->height >= (t->right->left ? t->right->left->height : 0)) 
+        {
+            // Right-Right case
+            return Left;
+        }
+        else
+        {
+            // Right-Left case
+            return DoubleRotationRightLeft;
+        }
+    }
     return Left;
 }
